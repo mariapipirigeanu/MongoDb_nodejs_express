@@ -1,0 +1,105 @@
+
+	{	
+	"_id":{"$oid":"60350361280fa61b8c8aa73a"},
+	"users":{
+		"id":1,
+		"name":"Maria",
+		"email":"maria@gmail.com",
+		"phone":"0738665545"
+	},
+	"date":{"$date":"2021-08-23T00:00:00.000Z"},
+	"messages":{
+		"id":1,
+		"date":{"$date":"2021-08-23T00:00:00.000Z"},
+		"sender":"Mama",
+		"receiver":"Maria",
+		"message_content":"Buna"
+		}
+	}
+	
+	
+	{
+	"_id":{"$oid":"6035048195aa932b24b35ee3"}
+	"users": {
+        "id": 2,
+        "name": "Ioana",
+        "email": "ioana@gmail.com",
+        "phone": "0738115545"
+    },
+    "date": {
+        "$date": "2020-05-21T00:00:00.000Z"
+    },
+    "messages": {
+        "id": 2,
+        "date": {
+            "$date": "2020-08-23T00:00:00.000Z"
+        },
+        "sender": "Ion",
+        "receiver": "Ioana",
+        "message_content": "Pa"
+    }}
+	
+	{
+	"_id":{"$oid":"603504cf61acea208cf7465c}
+    "users": {
+        "id": 3,
+        "name": "Catalina",
+        "email": "cata@gmail.com",
+        "phone": "0738115115"
+    },
+    "date": {
+        "$date": "2020-03-11T00:00:00.000Z"
+    },
+    "messages": {
+        "id": 3,
+        "date": {
+            "$date": "2020-08-23T00:00:00.000Z"
+        },
+        "sender": "Silviu",
+        "receiver": "Catalina",
+        "message_content": "Iau paine"
+    }
+	
+{	"_id":{"$oid":"6035052feb0ef60c2449d5cb"}
+    "users": {
+        "id": 4,
+        "name": "Adina",
+        "email": "adina@gmail.com",
+        "phone": "0723115115"
+    },
+    "date": {
+        "$date": "2020-08-10T00:00:00.000Z"
+    },
+    "messages": {
+        "id": 4,
+        "date": {
+            "$date": "2020-06-23T00:00:00.000Z"
+        },
+        "sender": "Teo",
+        "receiver": "Adina",
+        "message_content": "Coboara"
+    }
+}
+
+{
+	"_id":{"$oid":"603505ab273d0301e84e323f"}
+    "users": {
+        "id": 5,
+        "name": "Costi",
+        "email": "costi@gmail.com",
+        "phone": "0723115112"
+    },
+    "date": {
+        "$date": "2020-08-03T00:00:00.000Z"
+    },
+    "messages": {
+        "id": 5,
+        "date": {
+            "$date": "2020-06-23T00:00:00.000Z"
+        },
+        "sender": "Alina",
+        "receiver": "Costi",
+        "message_content": "Ne vedem diseara?"
+    }
+}
+	
