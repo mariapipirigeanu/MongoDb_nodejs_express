@@ -47,7 +47,7 @@ router.delete("/delete/:id", (req, res) => {
 
 //put method
 router.put('/update/:id', function(req,res,next)  {
-  Message.updateOne({_id: req.params.id},{$set:{messages:req.body.mesages}})
+  Message.updateOne({_id: req.params.id},{$set:{date:req.body.date}})
   
  
   .then((response)=>{
