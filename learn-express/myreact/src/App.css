@@ -1,0 +1,38 @@
+.App {
+  text-align: center;
+  background: rgb(252, 234, 213);
+  color: rgb(43, 41, 41) ;
+}
+
+nav{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(43, 41, 41);
+  color: rgb(240, 236, 231);
+}
+
+.nav-links{
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.errors{
+  color:red;
+  font-size:13px;
+  justify-content: right;
+ font-weight: bold;
+}
+
+.btn{
+  color: bisque;
+  background:rgb(43, 41, 41) ;
+
+}
+
+
+
