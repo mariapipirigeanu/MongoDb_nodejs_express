@@ -17,8 +17,17 @@ mongoose
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors=require("cors");
 
 const app = express();
+
+app.use(
+	cors({
+		origin:["http://localhost:3000"],
+		credentials:true,
+	})
+);
+
 app.use(bodyParser.json());
 const db = "mongodb://localhost:27017/mydatabase";
 mongoose
