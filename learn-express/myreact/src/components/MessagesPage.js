@@ -33,7 +33,7 @@ function MessagesPage() {
     
     console.log(messages);
     // const obj=messages.map((message)=> {
-    //     return (message.message_content);
+    //     return (message.messages.message_content);
     // });
     // console.log(obj);
   return (
@@ -41,9 +41,9 @@ function MessagesPage() {
         <h1>Messages </h1>
         {/* {messages.map(message => (
             <div>
-                <p>Sender: {message.sender}</p>
-                <p>Receiver: {message.receiver}</p>
-                <p>Message content: {message.message_content}</p>
+                <p>Sender: {message.messages.sender}</p>
+                <p>Receiver: {message.messages.receiver}</p>
+                <p>Message content: {message.messages.message_content}</p>
                 <p>Date:{message.date}</p>
             </div>
         ))} */}
