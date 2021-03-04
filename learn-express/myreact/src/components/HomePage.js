@@ -167,7 +167,7 @@ useEffect(()=> {
 });
          
     }
-    else alert("Errors in the form!")
+    //else alert("Errors in the form!")
 },[errors])
 
 return(
@@ -208,6 +208,7 @@ return(
          placeholder="user@email.com"
          value={email}
         onChange={e => setEmail(e.target.value)}
+        
         />
      {errors.email && <p className="errors"> {errors.email} </p>}
         </p>
@@ -226,11 +227,12 @@ return(
         </div>
 
         <div className="messages">
-        <h3>Messages</h3>
+        <h3>Messages:</h3>
         <p>
             <label> Message Date: </label>
             <DatePicker selected={startDate} 
              onChange={date => setStartDate(date)}
+             dateFormat='dd/MM/yyyy'
              />
         </p>
 
