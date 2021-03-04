@@ -1,7 +1,7 @@
-import Rect, { useCallback } from 'react';
+
 //import './App.css';
-import React, {useState, useEffect} from 'react';
-import {useForm} from "react-hook-form";
+import React, {useState,useEffect} from 'react';
+
 import axios from 'axios';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -30,16 +30,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function HomePage() {
 
-const current=new Date();
-const datecurrent=`${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-// const Example = () => {
-//     const [startDate, setStartDate] = useState(new Date());
-//     return (
-//       <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
-//     );
-//   };
- const [startDate, setStartDate] = useState(new Date());
-const[date, setDate]=useState("");
+const [startDate, setStartDate] = useState(new Date());
+const[date, setDate]=useState(new Date());
 
 const[name,setName]=useState("");
 const[email,setEmail]=useState("");
@@ -50,10 +42,10 @@ const[receiver,setReceiver]=useState("");
 const[message_content,setMessage_content]=useState("");
 
 
-const[errors,setErrors]=useState({name:"",email:"",phone:"",sender:"", receiver:"",message_content:""});
+const[errors,setErrors]=useState({});
+const[isSubmitting,setIsSubmitting]=useState(false);
 
-
-   function validate(values){
+   function validate(){
    
     let err = {};
     if (!name) {
@@ -79,14 +71,14 @@ const[errors,setErrors]=useState({name:"",email:"",phone:"",sender:"", receiver:
       }
 
       if (!receiver) {
-        err.receiver = 'Sender is required';
+        err.receiver = 'Receiver is required';
       }
 
       else if (receiver.length <3) {
         err.receiver = 'Receiver cannot be less than 3 characters ';
       }
       if (!message_content) {
-        err.message_content = 'Sender is required';
+        err.message_content = 'Content is required';
       }
 return err;
     
@@ -94,11 +86,12 @@ return err;
 
 const handleSubmit = e => {
     e.preventDefault();
-
+    setErrors(validate());
+    setIsSubmitting(true);
 };
 
 const onSubmit = () => {
-    
+ 
 const users=[{
     name:name,
     email: email,
@@ -119,11 +112,13 @@ const obj={
 }
 
 console.log(obj);
- setErrors(validate(obj));
+// setErrors(validate());
+// setIsSubmitting(true);
 
+console.log(errors);
 
- console.log(Object.keys(errors).length);
- if (Object.keys(errors).length === 0){
+console.log(Object.keys(errors).length);
+if (Object.keys(errors).length === 0 && isSubmitting){
      
 axios.post("http://localhost:5000/messages/add",obj)
 .then(res => {
@@ -135,20 +130,29 @@ axios.post("http://localhost:5000/messages/add",obj)
     console.log(error);
 });
  }
- //else alert("Errors in the form!")
-}
+  else  alert("Errors in the form!")
+ 
+ }
+
+useEffect(()=> {
+    if (Object.keys(errors).length === 0 && isSubmitting){
+         console.log("Submitted");
+        
+    }
+},[errors])
+
 return(
 <div className="App">
     <h1> Complete the form </h1>
-   {/* <form onSubmit={e => e.preventDefault()}>*/}
-        <form onSubmit={handleSubmit}  validate>
+   
+        <form onSubmit={handleSubmit}  novalidate>
        
         <div className="date">
         <p>
         <label> Date: </label> 
-        <DatePicker selected={startDate} 
+        <DatePicker  selected={startDate} 
         onChange={date => setStartDate(date)}
-         onInput={e => setDate(e.target.date)}
+        dateFormat='dd/MM/yyyy'
          />
          </p>
         </div>
@@ -160,24 +164,21 @@ return(
         <input 
         name="name"
          type="text" 
-         required 
          placeholder="name"
          value={name}
-         onInput={e => setName(e.target.value)}
+        onChange={e => setName(e.target.value)}
       /> 
       {errors.name && <p className="errors"> {errors.name} </p>}
         </p>
        
-
         <p>
             <label> Email: </label>
         <input 
         name="email"
          type="email" 
-         required 
          placeholder="user@email.com"
          value={email}
-         onInput={e => setEmail(e.target.value)}
+        onChange={e => setEmail(e.target.value)}
         />
      {errors.email && <p className="errors"> {errors.email} </p>}
         </p>
@@ -187,10 +188,9 @@ return(
         <input 
         name="phone"
          type="text" 
-         required 
          placeholder="phone number"
          value={phone}
-         onInput={e => setPhone(e.target.value)}
+        onChange={e => setPhone(e.target.value)}
         />
         {errors.phone && <p className="errors"> {errors.phone} </p>}
         </p>
@@ -202,7 +202,6 @@ return(
             <label> Message Date: </label>
             <DatePicker selected={startDate} 
              onChange={date => setStartDate(date)}
-            onInput={e => setDate(e.target.date)}
              />
         </p>
 
@@ -211,10 +210,9 @@ return(
         <input 
         name="sender"
          type="text" 
-         required 
          placeholder="name"
          value={sender}
-         onInput={e => setSender(e.target.value)}  
+        onChange={e => setSender(e.target.value)}
         />
          {errors.sender && <p className="errors"> {errors.sender} </p>}
         </p>
@@ -224,10 +222,9 @@ return(
         <input 
         name="receiver"
          type="text" 
-         required 
          placeholder="name receiver"
          value={receiver}
-         onInput={e => setReceiver(e.target.value)}
+        onChange={e => setReceiver(e.target.value)}
          />
         {errors.receiver && <p className="errors"> {errors.receiver} </p>}
         </p>
@@ -236,11 +233,10 @@ return(
             <label> Content: </label>
         <input 
         name="message_content"
-        required 
         placeholder="message"
          type="text" 
          value={message_content}
-         onInput={e => setMessage_content(e.target.value)}
+        onChange={e => setMessage_content(e.target.value)}
         />
          {errors.message_content && <p className="errors"> {errors.message_content} </p>}
         </p>

@@ -34,5 +34,26 @@ nav{
 
 }
 
+.btn1{
+  color:rgb(43, 41, 41);
+  background:bisque ;
+
+}
+
+.msj{
+  align-items: center;
+  border-radius: 10px;
+  border-width: medium;
+  box-shadow: 0px 5px 20px;
+  margin:20px;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-around;
+  background:rgb(43, 41, 41) ;
+  color: bisque;
+  
+ 
+}
+
 
 

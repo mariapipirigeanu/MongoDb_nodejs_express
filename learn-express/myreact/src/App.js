@@ -1,4 +1,4 @@
-import Rect from 'react';
+//import Rect from 'react';
 import './App.css';
 import Nav from './components/Nav';
 import HomePage from './components/HomePage';
