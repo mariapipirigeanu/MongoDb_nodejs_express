@@ -45,6 +45,24 @@ const[message_content,setMessage_content]=useState("");
 const[errors,setErrors]=useState({});
 const[isSubmitting,setIsSubmitting]=useState(false);
 
+const users=[{
+    name:name,
+    email: email,
+    phone: phone
+}]
+const messages=[{
+    
+    date:date,
+    sender:sender,
+    receiver:receiver,
+    message_content:message_content
+}]
+const obj={ 
+    users: users,
+    messages:messages,
+    date: date
+    
+}
    function validate(){
    
     let err = {};
@@ -92,53 +110,64 @@ const handleSubmit = e => {
 
 const onSubmit = () => {
  
-const users=[{
-    name:name,
-    email: email,
-    phone: phone
-}]
-const messages=[{
+// const users=[{
+//     name:name,
+//     email: email,
+//     phone: phone
+// }]
+// const messages=[{
     
-    date:date,
-    sender:sender,
-    receiver:receiver,
-    message_content:message_content
-}]
-const obj={ 
-    users: users,
-    messages:messages,
-    date: date
+//     date:date,
+//     sender:sender,
+//     receiver:receiver,
+//     message_content:message_content
+// }]
+// const obj={ 
+//     users: users,
+//     messages:messages,
+//     date: date
     
-}
+// }
 
-console.log(obj);
+//console.log(obj);
 // setErrors(validate());
 // setIsSubmitting(true);
 
-console.log(errors);
-console.log(Object.keys(errors).length);
-if (Object.keys(errors).length === 0 && isSubmitting){
+// console.log(errors);
+// console.log(Object.keys(errors).length);
+// if (Object.keys(errors).length === 0 && isSubmitting){
      
-axios.post("http://localhost:5000/messages/add",obj)
-.then(res => {
-    alert("Message Added...");
-    console.log(res);
-    console.log(res.data);
-})
-.catch((error) =>{
-    console.log(error);
-});
- }
-  else  alert("Errors in the form!")
+// axios.post("http://localhost:5000/messages/add",obj)
+// .then(res => {
+//     alert("Message Added...");
+//     console.log(res);
+//     console.log(res.data);
+// })
+// .catch((error) =>{
+//     console.log(error);
+// });
+//  }
+  //else  alert("Errors in the form!")
  
  }
 
 useEffect(()=> {
     if (Object.keys(errors).length === 0 && isSubmitting){
+
          console.log("Submitted");
+
+         axios.post("http://localhost:5000/messages/add",obj)
+        .then(res => {
+            alert("Message Added...");
+        console.log(res);
+        console.log(res.data);
+    })
+        .catch((error) =>{
+         console.log(error);
+});
          
-        
     }
+    else alert("Errors in the form!")
 },[errors])
 
 return(
@@ -242,8 +271,8 @@ return(
         </p>
         
         </div>
-    <button className="btn" type="submit" onClick={()=> onSubmit()}> Submit </button>
-
+   
+    <button className="btn" type="submit" > Submit </button>
     </form>
 </div>
 );
