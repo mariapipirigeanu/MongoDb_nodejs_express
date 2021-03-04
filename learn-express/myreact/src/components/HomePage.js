@@ -116,7 +116,6 @@ console.log(obj);
 // setIsSubmitting(true);
 
 console.log(errors);
-
 console.log(Object.keys(errors).length);
 if (Object.keys(errors).length === 0 && isSubmitting){
      
@@ -137,6 +136,7 @@ axios.post("http://localhost:5000/messages/add",obj)
 useEffect(()=> {
     if (Object.keys(errors).length === 0 && isSubmitting){
          console.log("Submitted");
+         
         
     }
 },[errors])
@@ -145,7 +145,7 @@ return(
 <div className="App">
     <h1> Complete the form </h1>
    
-        <form onSubmit={handleSubmit}  novalidate>
+        <form onSubmit={handleSubmit}  noValidate>
        
         <div className="date">
         <p>

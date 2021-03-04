@@ -41,7 +41,7 @@ function MessagesPage() {
           return messages.map((message) => (
              // console.log(message)
             message.messages.map(m =>
-            <div className="msj">
+            <div className="msj" key={m._id}>
               <p>Id Message: {m._id} </p>
               <p>Sender: {m.sender}</p>
               <p>Receiver: {m.receiver}</p>
