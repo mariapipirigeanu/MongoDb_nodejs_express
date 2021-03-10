@@ -108,48 +108,6 @@ const handleSubmit = e => {
     setIsSubmitting(true);
 };
 
-const onSubmit = () => {
- 
-// const users=[{
-//     name:name,
-//     email: email,
-//     phone: phone
-// }]
-// const messages=[{
-    
-//     date:date,
-//     sender:sender,
-//     receiver:receiver,
-//     message_content:message_content
-// }]
-// const obj={ 
-//     users: users,
-//     messages:messages,
-//     date: date
-    
-// }
-
-//console.log(obj);
-// setErrors(validate());
-// setIsSubmitting(true);
-
-// console.log(errors);
-// console.log(Object.keys(errors).length);
-// if (Object.keys(errors).length === 0 && isSubmitting){
-     
-// axios.post("http://localhost:5000/messages/add",obj)
-// .then(res => {
-//     alert("Message Added...");
-//     console.log(res);
-//     console.log(res.data);
-// })
-// .catch((error) =>{
-//     console.log(error);
-// });
-//  }
-  //else  alert("Errors in the form!")
- 
- }
 
 useEffect(()=> {
     if (Object.keys(errors).length === 0 && isSubmitting){

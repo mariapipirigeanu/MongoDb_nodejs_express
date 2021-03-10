@@ -6,7 +6,12 @@ import MessagesPage from './components/MessagesPage';
 import {BrowserRouter as Router, Switch,Route} from 'react-router-dom';
 
 function App() {
+ 
+
   return (
+   
+    
+
     <Router>
     <div className="App">
       <Nav />
@@ -16,6 +21,8 @@ function App() {
       </Switch>
     </div>
     </Router>
+
+    
   );
 }
 

@@ -1,24 +1,29 @@
 import Rect,{useEffect,useState} from 'react';
 //import './App.css';
 import axios from 'axios';
-
+import { getMessages } from './actions/actions';
+import { useDispatch, useSelector } from 'react-redux';
 function MessagesPage() {
 
-    const[messages,setMessages] = useState([]);
+   // const[messages,setMessages] = useState([]);
     const [reload, setReload] = useState(false);
 
-    function getMessages() {
+    const messages = useSelector(state => state.reducers.messages);
+    const dispatch = useDispatch();
+  
+
+    // function getMessages() {
    
-        axios.get('http://localhost:5000/messages/')
-            .then(res => {
-                setMessages(res.data);
-               // console.log(res.data);
+    //     axios.get('http://localhost:5000/messages/')
+    //         .then(res => {
+    //             setMessages(res.data);
+    //            // console.log(res.data);
                 
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-      }
+    //         })
+    //         .catch(function (error) {
+    //             console.log(error);
+    //         });
+    //   }
       function deleteMessages(itemId){
         axios.delete(`http://localhost:5000/messages/delete/${itemId}` )
         .then(response => {
@@ -28,10 +33,10 @@ function MessagesPage() {
     });
 }
       useEffect(() => {
-        getMessages();
+        console.log("effect");
+        dispatch(getMessages());
     }, [reload]);
     
-   
 
     const loadMessages = () => {
        
